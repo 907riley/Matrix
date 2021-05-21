@@ -59,6 +59,7 @@ public class Settings implements ActionListener {
         mode_choose = new JComboBox<String>();
         mode_choose.addItem("Gaussian Elimination");
         mode_choose.addItem("Calculate Determinant");
+        mode_choose.addItem("Compute Inverse");
 
         JTextArea instructions = new JTextArea("This is a calculator for solving a series of linear equations " +
                 "using Gaussian \nElimination and for finding the determinant of an n x n matrix. To use it, \nsimply select the " +
@@ -132,6 +133,16 @@ public class Settings implements ActionListener {
             Determinant determinant = new Determinant(r, r);
             determinant.setUpMainWindow();
 
+        } else if (temp_mode.equals("Compute Inverse")) {
+
+            int r = Integer.parseInt(temp_n);
+
+            rows = r;
+            columns = r;
+            mode = temp_mode;
+
+            Inverse inverse = new Inverse(r, r);
+            inverse.setUpMainWindow();
         }
     }
 }

@@ -28,6 +28,7 @@ public abstract class Matrix implements ActionListener{
     protected JPanel solutions;
     protected JButton perform_gaussian_elimination;
     protected JButton perform_determinant;
+    protected JButton perform_inverse;
     protected JButton reset;
 
     public abstract void setUpMainWindow();
@@ -58,6 +59,20 @@ public abstract class Matrix implements ActionListener{
         for (int row = 0; row < rows; ++row) {
             for (int col = 0; col < columns; ++col) {
                 matrix[row][col] = new Coefficient(row, col, 0, columns);
+            }
+        }
+    }
+
+    public Matrix(Matrix rhs) {
+        matrix = new Coefficient[rhs.rows][rhs.columns];
+        solutions_array = new double[rhs.rows];
+        rows = rhs.rows;
+        columns = rhs.columns;
+
+        // make each of the coefficient objects
+        for (int row = 0; row < rows; ++row) {
+            for (int col = 0; col < columns; ++col) {
+                matrix[row][col] = new Coefficient(row, col, rhs.matrix[row][col].getValue(), columns);
             }
         }
     }
@@ -173,6 +188,7 @@ public abstract class Matrix implements ActionListener{
         updateSolutions();
     }
 
+
     /**
      Function for calculating the determinant of an n x n matrix. Uses a modified Gaussian Elimination algorithm to
      get the U decomposition. Then multiplies along the diagonal to get the determinant.
@@ -261,6 +277,10 @@ public abstract class Matrix implements ActionListener{
         }
     }
 
+    public void compute_inverse() {
+
+    }
+
     /**
      actionPerformed function that listens for when the button is pressed to perform a function and when
      the reset button is being pressed.
@@ -309,6 +329,11 @@ public abstract class Matrix implements ActionListener{
                 }
             }
             matrix_view.updateUI();
+        } else if (e.getSource().equals(perform_inverse)) {
+            if (determinant_solution == 0) {
+                System.out.println("No inverse");
+                updateSolutions();
+            }
         }
     }
 
