@@ -20,6 +20,7 @@ public class Inverse extends Matrix {
     public Inverse (int r, int c) {
 
         // create the inverse_check determinant to check if it has an inverse
+        // need to change this so that the inverse_check matrix gets filled out as an event action
         inverse_check = new Determinant(r, c);
 
         for (int i = 0; i < rows; ++i) {
