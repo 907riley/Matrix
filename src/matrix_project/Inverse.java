@@ -21,6 +21,8 @@ public class Inverse extends Matrix {
 
         // create the inverse_check determinant to check if it has an inverse
         // need to change this so that the inverse_check matrix gets filled out as an event action
+        // make it so the main one gets made as a determinant, that way the inverse_matrix
+        // with the extra columns doesn't need to do goofy things
         inverse_check = new Determinant(r, c);
 
         for (int i = 0; i < rows; ++i) {
