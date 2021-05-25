@@ -35,9 +35,10 @@ public class Inverse extends Matrix {
         }
 
         // calculate the determinant, if it is 0, then no inverse
-        inverse_check.calculate_determinant();
-        determinant_solution = inverse_check.determinant_solution;
+        // inverse_check.calculate_determinant();
+        // determinant_solution = inverse_check.determinant_solution;
 
+        // change all of this to just be a normal n x n
         matrix = new Coefficient[r][2 * c];
         solutions_array = new double[r];
         rows = r;
