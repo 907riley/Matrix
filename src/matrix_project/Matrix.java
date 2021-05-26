@@ -278,6 +278,18 @@ public abstract class Matrix implements ActionListener{
     }
 
     public void compute_inverse() {
+        Determinant test = new Determinant(rows, columns);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < columns; ++j) {
+                test.matrix[i][j].setValue(matrix[i][j].getValue());
+            }
+        }
+        if (determinant_solution == 0) {
+            System.out.println("No inverse solution");
+            updateSolutions();
+            matrix_view.updateUI();
+            return;
+        }
 
     }
 
@@ -330,10 +342,16 @@ public abstract class Matrix implements ActionListener{
             }
             matrix_view.updateUI();
         } else if (e.getSource().equals(perform_inverse)) {
-            if (determinant_solution == 0) {
-                System.out.println("No inverse");
-                updateSolutions();
+            for (int i = 0; i < rows; ++i) {
+                for (int j = 0; j < columns; ++j) {
+                    if (!matrix[i][j].updateValue()) {
+                        System.out.println("Something wrong with input, everything must be numbers!");
+                        return;
+                    }
+                }
             }
+
+            compute_inverse();
         }
     }
 

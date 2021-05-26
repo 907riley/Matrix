@@ -15,7 +15,6 @@ import java.awt.*;
 
 public class Inverse extends Matrix {
 
-    Determinant inverse_check;
 
     public Inverse (int r, int c) {
 
@@ -23,7 +22,6 @@ public class Inverse extends Matrix {
         // need to change this so that the inverse_check matrix gets filled out as an event action
         // make it so the main one gets made as a determinant, that way the inverse_matrix
         // with the extra columns doesn't need to do goofy things
-        inverse_check = new Determinant(r, c);
 
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < columns; ++j) {
@@ -35,8 +33,6 @@ public class Inverse extends Matrix {
         }
 
         // calculate the determinant, if it is 0, then no inverse
-        // inverse_check.calculate_determinant();
-        // determinant_solution = inverse_check.determinant_solution;
 
         // change all of this to just be a normal n x n
         matrix = new Coefficient[r][2 * c];
@@ -123,6 +119,7 @@ public class Inverse extends Matrix {
 
         if (determinant_solution == 0) {
             inverse_label = new JLabel("Determinant is 0. No inverse");
+            System.out.println("in determinant_solution == 0");
         } else {
             inverse_label = new JLabel("There's the inverse!");
         }
@@ -130,8 +127,4 @@ public class Inverse extends Matrix {
         main_window.add(solutions, BorderLayout.SOUTH);
     }
 
-
-    public Determinant getInverse_check() {
-        return inverse_check;
-    }
 }
