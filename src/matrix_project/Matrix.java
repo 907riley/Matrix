@@ -319,9 +319,9 @@ public abstract class Matrix implements ActionListener{
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < rows; ++j) {
                 if (i != j) {
-                    double temp = matrix[j][i].getValue() / matrix[i][j].getValue();
+                    double temp = matrix[j][i].getValue() / matrix[i][i].getValue();
                     for (int k = 0; k < 2 * rows; ++k) {
-                        matrix[j][k].setValue(matrix[j][k].getValue() - matrix[i][k].getValue() * temp);
+                        matrix[j][k].setValue(matrix[j][k].getValue() - (matrix[i][k].getValue() * temp));
                     }
                 }
             }
@@ -399,6 +399,7 @@ public abstract class Matrix implements ActionListener{
             updateSolutions();
             for (int i = 0; i < rows; ++i) {
                 for (int j = 0; j < columns; ++j) {
+                    matrix[i][j].setValue(matrix[i][j + columns].getValue());
                     matrix[i][j].updateGUIValue();
                 }
             }
