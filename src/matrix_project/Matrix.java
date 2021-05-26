@@ -5,6 +5,9 @@
  * CPSC 450, Spring 2021
  * Semester Project
  *
+ * Used this website to help with the inverse part of the program
+ * https://www.geeksforgeeks.org/finding-inverse-of-a-matrix-using-gauss-jordan-method/
+ *
  * @author Riley Sikes
  * @version v1.0 04/29/21
  */
@@ -285,8 +288,11 @@ public abstract class Matrix implements ActionListener{
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < columns; ++j) {
                 test.matrix[i][j].setValue(matrix[i][j].getValue());
+                System.out.println(test.matrix[i][j].getValue());
             }
         }
+        test.calculate_determinant();
+        determinant_solution = test.determinant_solution;
 
         // determinant is 0, no inverse
         if (determinant_solution == 0) {
@@ -296,6 +302,33 @@ public abstract class Matrix implements ActionListener{
             return;
         }
 
+        // getting the rows in the correct order
+        for (int i = rows - 1; i > 0; --i) {
+            if (matrix[i - 1][0].getValue() < matrix[i][0].getValue()) {
+                for (int j = 0; j < 2 * rows; ++j) {
+                    swap((i - 1), j, i, j);
+                }
+            }
+        }
+
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < rows; ++j) {
+                if (i != j) {
+                    double temp = matrix[j][i].getValue() / matrix[i][j].getValue();
+                    for (int k = 0; k < 2 * rows; ++k) {
+                        matrix[j][k].setValue(matrix[j][k].getValue() - matrix[i][k].getValue() * temp);
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < rows; ++i) {
+
+            double temp = matrix[i][i].getValue();
+            for (int j = 0; j < 2 * rows; ++j) {
+                matrix[i][j].setValue(matrix[i][j].getValue() / temp);
+            }
+        }
 
     }
 
@@ -358,6 +391,13 @@ public abstract class Matrix implements ActionListener{
             }
 
             compute_inverse();
+            updateSolutions();
+            for (int i = 0; i < rows; ++i) {
+                for (int j = 0; j < columns; ++j) {
+                    matrix[i][j].updateGUIValue();
+                }
+            }
+            matrix_view.updateUI();
         }
     }
 
