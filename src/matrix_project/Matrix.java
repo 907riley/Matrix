@@ -288,7 +288,6 @@ public abstract class Matrix implements ActionListener{
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < columns; ++j) {
                 test.matrix[i][j].setValue(matrix[i][j].getValue());
-                System.out.println(test.matrix[i][j].getValue());
             }
         }
         test.calculate_determinant();
@@ -306,7 +305,13 @@ public abstract class Matrix implements ActionListener{
         for (int i = rows - 1; i > 0; --i) {
             if (matrix[i - 1][0].getValue() < matrix[i][0].getValue()) {
                 for (int j = 0; j < 2 * rows; ++j) {
-                    swap((i - 1), j, i, j);
+                    // check to make sure the values being swapped aren't equal
+                    if (matrix[i - 1][j] != matrix[i][j]) {
+                        double temp = matrix[i - 1][j].getValue();
+                        matrix[i - 1][j].setValue(matrix[i][j].getValue());
+                        System.out.println("Swapping: " + temp + " -> " + matrix[i][j].getValue());
+                        matrix[i][j].setValue(temp);
+                    }
                 }
             }
         }
