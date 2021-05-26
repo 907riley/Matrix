@@ -278,18 +278,24 @@ public abstract class Matrix implements ActionListener{
     }
 
     public void compute_inverse() {
+
+        // creating a determinant object to test if the inverse is 0
         Determinant test = new Determinant(rows, columns);
+        // copy over all the values from the inverse matrix
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < columns; ++j) {
                 test.matrix[i][j].setValue(matrix[i][j].getValue());
             }
         }
+
+        // determinant is 0, no inverse
         if (determinant_solution == 0) {
             System.out.println("No inverse solution");
             updateSolutions();
             matrix_view.updateUI();
             return;
         }
+
 
     }
 

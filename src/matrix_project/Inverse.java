@@ -117,9 +117,11 @@ public class Inverse extends Matrix {
 
         JLabel inverse_label;
 
+        // if there is no inverse (when the determinant is 0)
         if (determinant_solution == 0) {
             inverse_label = new JLabel("Determinant is 0. No inverse");
             System.out.println("in determinant_solution == 0");
+        // if there is an inverse
         } else {
             inverse_label = new JLabel("There's the inverse!");
         }
