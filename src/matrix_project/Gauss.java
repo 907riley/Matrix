@@ -105,4 +105,9 @@ public class Gauss extends Matrix{
 
         main_window.add(solutions, BorderLayout.SOUTH);
     }
+
+    @Override
+    public void resetSolutions() {
+        reset();
+    }
 }

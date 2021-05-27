@@ -37,6 +37,7 @@ public abstract class Matrix implements ActionListener{
     public abstract void setUpMainWindow();
     public abstract void setUpSolutions();
     public abstract void updateSolutions();
+    public abstract void resetSolutions();
 
     /**
      DVC for the sake of the subclasses needing a DVC. It is never used on it's own.
@@ -365,7 +366,7 @@ public abstract class Matrix implements ActionListener{
             matrix_view.updateUI();
         // If trying to reset the matrix and GUI view
         } else if (e.getSource().equals(reset)) {
-            reset();
+            resetSolutions();
         // If trying to calculate a determinant
         } else if (e.getSource().equals(perform_determinant)) {
             for (int i = 0; i < rows; ++i) {
@@ -396,6 +397,17 @@ public abstract class Matrix implements ActionListener{
             }
 
             compute_inverse();
+
+            String matrices = "";
+            for (int r = 0; r < rows; ++r) {
+                matrices += "[";
+                for (int c = 0; c < 2 * columns; ++c) {
+                    matrices += " " + matrix[r][c].getValue() + " ";
+                }
+                matrices += "]\n";
+            }
+            System.out.println(matrices);
+
             updateSolutions();
             for (int i = 0; i < rows; ++i) {
                 for (int j = 0; j < columns; ++j) {

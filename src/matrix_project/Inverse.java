@@ -129,4 +129,33 @@ public class Inverse extends Matrix {
         main_window.add(solutions, BorderLayout.SOUTH);
     }
 
+    @Override
+    public void resetSolutions() {
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < 2 * columns; ++j) {
+                matrix[i][j].setValue(0);
+                if (j == (i + rows)) {
+                    matrix[i][j].setValue(1);
+                }
+                matrix[i][j].updateGUIValue();
+            }
+            solutions_array[i] = 0;
+        }
+
+        determinant_solution = 0;
+
+        setUpSolutions();
+        matrix_view.updateUI();
+        solutions.updateUI();
+
+        String matrices = "";
+        for (int r = 0; r < rows; ++r) {
+            matrices += "[";
+            for (int c = 0; c < 2 * columns; ++c) {
+                matrices += " " + matrix[r][c].getValue() + " ";
+            }
+            matrices += "]\n";
+        }
+        System.out.println(matrices);
+    }
 }
