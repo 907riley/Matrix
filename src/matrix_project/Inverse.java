@@ -15,26 +15,16 @@ import java.awt.*;
 
 public class Inverse extends Matrix {
 
-
+    /**
+     The EVC for the Inverse class. Uses a row and column amount to create a Matrix with double the column count. The
+     extra columns are for the identity matrix that is needed for computing the matrix.
+     *
+     * @param r int row count
+     * @param c int column count
+     */
     public Inverse (int r, int c) {
 
-        // create the inverse_check determinant to check if it has an inverse
-        // need to change this so that the inverse_check matrix gets filled out as an event action
-        // make it so the main one gets made as a determinant, that way the inverse_matrix
-        // with the extra columns doesn't need to do goofy things
-
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < columns; ++j) {
-                if (!matrix[i][j].updateValue()) {
-                    System.out.println("Something wrong with input, everything must be numbers!");
-                    return;
-                }
-            }
-        }
-
-        // calculate the determinant, if it is 0, then no inverse
-
-        // change all of this to just be a normal n x n
+        // make the matrix have extra columns for the identity matrix
         matrix = new Coefficient[r][2 * c];
         solutions_array = new double[r];
         rows = r;
@@ -58,6 +48,11 @@ public class Inverse extends Matrix {
 
     }
 
+    /**
+     Function for setting up the GUI for use. Also the function that basically starts the program since it is event
+     driven.
+     *
+     */
     @Override
     public void setUpMainWindow() {
         // new JFrame, this will hold everything
@@ -99,6 +94,10 @@ public class Inverse extends Matrix {
         main_window.setVisible(true);
     }
 
+    /**
+     Sets up the GUI to display the solutions to the matrix
+     *
+     */
     @Override
     public void setUpSolutions() {
         solutions = new JPanel();
@@ -110,6 +109,10 @@ public class Inverse extends Matrix {
         main_window.add(solutions, BorderLayout.SOUTH);
     }
 
+    /**
+     Updates the solutions on the GUI
+     *
+     */
     @Override
     public void updateSolutions() {
         solutions = new JPanel();
@@ -129,6 +132,10 @@ public class Inverse extends Matrix {
         main_window.add(solutions, BorderLayout.SOUTH);
     }
 
+    /**
+     Needed a special reset for the Inverse class since it has extra columns
+     *
+     */
     @Override
     public void resetSolutions() {
         for (int i = 0; i < rows; ++i) {
@@ -147,15 +154,5 @@ public class Inverse extends Matrix {
         setUpSolutions();
         matrix_view.updateUI();
         solutions.updateUI();
-
-        String matrices = "";
-        for (int r = 0; r < rows; ++r) {
-            matrices += "[";
-            for (int c = 0; c < 2 * columns; ++c) {
-                matrices += " " + matrix[r][c].getValue() + " ";
-            }
-            matrices += "]\n";
-        }
-        System.out.println(matrices);
     }
 }

@@ -386,7 +386,10 @@ public abstract class Matrix implements ActionListener{
                 }
             }
             matrix_view.updateUI();
+        // If trying to calculate the inverse
         } else if (e.getSource().equals(perform_inverse)) {
+
+            // read in all the values
             for (int i = 0; i < rows; ++i) {
                 for (int j = 0; j < columns; ++j) {
                     if (!matrix[i][j].updateValue()) {
@@ -396,21 +399,12 @@ public abstract class Matrix implements ActionListener{
                 }
             }
 
+            // compute the inverse and update the solutions
             compute_inverse();
-
-            String matrices = "";
-            for (int r = 0; r < rows; ++r) {
-                matrices += "[";
-                for (int c = 0; c < 2 * columns; ++c) {
-                    matrices += " " + matrix[r][c].getValue() + " ";
-                }
-                matrices += "]\n";
-            }
-            System.out.println(matrices);
-
             updateSolutions();
             for (int i = 0; i < rows; ++i) {
                 for (int j = 0; j < columns; ++j) {
+                    // j + columns because we need to grab the values on the right side of the matrix
                     matrix[i][j].setValue(matrix[i][j + columns].getValue());
                     matrix[i][j].updateGUIValue();
                 }
