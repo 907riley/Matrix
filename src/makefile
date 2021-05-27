@@ -11,6 +11,7 @@ CLASSES = \
         matrix_project/Matrix.java \
         matrix_project/Gauss.java \
         matrix_project/Determinant.java \
+        matrix_project/Inverse.java \
         matrix_project/Coefficient.java \
         matrix_project/GaussTest1.java \
         matrix_project/GaussTest2.java \
@@ -19,7 +20,11 @@ CLASSES = \
         matrix_project/DeterminantTest1.java \
         matrix_project/DeterminantTest2.java \
         matrix_project/DeterminantTest3.java \
-        matrix_project/DeterminantTest4.java 
+        matrix_project/DeterminantTest4.java \
+        matrix_project/InverseTest1.java \
+        matrix_project/InverseTest2.java \
+        matrix_project/InverseTest3.java \
+        matrix_project/InverseTest4.java 
         
         
         
@@ -34,6 +39,11 @@ DTEST1 = matrix_project/DeterminantTest1
 DTEST2 = matrix_project/DeterminantTest2
 DTEST3 = matrix_project/DeterminantTest3
 DTEST4 = matrix_project/DeterminantTest4
+
+ITEST1 = matrix_project/InverseTest1
+ITEST2 = matrix_project/InverseTest2
+ITEST3 = matrix_project/InverseTest3
+ITEST4 = matrix_project/InverseTest4
 
 default: classes
 
@@ -51,6 +61,10 @@ TestAll: classes
 	$(JVM) $(DTEST2)
 	$(JVM) $(DTEST3)
 	$(JVM) $(DTEST4)
+	$(JVM) $(ITEST1)
+	$(JVM) $(ITEST2)
+	$(JVM) $(ITEST3)
+	$(JVM) $(ITEST4)
 	
 GaussTestAll: classes
 	$(JVM) $(GTEST1)
@@ -87,6 +101,24 @@ DeterminantTest3: classes
 	
 DeterminantTest4: classes
 	$(JVM) $(DTEST4)
+	
+InverseTestAll: classes
+	$(JVM) $(ITEST1)
+	$(JVM) $(ITEST2)
+	$(JVM) $(ITEST3)
+	$(JVM) $(ITEST4)
+	
+InverseTest1: classes
+	$(JVM) $(ITEST1)
+
+InverseTest2: classes
+	$(JVM) $(ITEST2)
+	
+InverseTest3: classes
+	$(JVM) $(ITEST3)
+	
+InverseTest4: classes
+	$(JVM) $(ITEST4)
 	
 clean:
 	$(RM) *.class
