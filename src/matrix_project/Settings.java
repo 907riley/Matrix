@@ -62,7 +62,7 @@ public class Settings implements ActionListener {
         mode_choose.addItem("Compute Inverse");
 
         JTextArea instructions = new JTextArea("This is a calculator for solving a series of linear equations " +
-                "using Gaussian \nElimination and for finding the determinant of an n x n matrix. To use it, \nsimply select the " +
+                "using Gaussian \nElimination, finding the determinant of an n x n matrix, and computing the \ninverse of a matrix. To use it, simply select the " +
                 "number of rows you need and the desired operation. Then \nclick the Confirm Settings button. \nFor the Gaussian" +
                 " Elimination, if it ever returns NaN as any value, that means \nthere is either no solution or " +
                 "infinitely many solutions.");
