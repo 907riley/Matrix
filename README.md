@@ -106,6 +106,18 @@ If you want to confirm the test results, here are the answers for all the tests.
 | -0.397 | 0.014 | 0.356 |
 | 0.260 | 0.301 | -0.164 |
 
+| InverseTest3 | | |
+|-|-|-|
+| -1.522 | 0.891 | 1.109 |
+| 0.087 | -0.065 | 0.065 |
+| 0.826 | -0.370 | -0.630 |
+
+| InverseTest4 | | | |
+|-|-|-|-|
+| -3.811 | -2.946 |  1.541 |  0.243 |
+| -5.595 | -4.027 |  1.730 |  0.378 |
+|  1.027 |  0.865 | -0.351 | -0.108 |
+|  1.243 |  0.784 | -0.162 |  0.027 |
 # Resources
 - [1] Levitin, Anany. Introduction to the Design and Analysis of Algorithms. Pearson. 
 - [2] 4.3 Evaluating the Determinant by Gaussian Elimination and by Row or Column Expansion, ocw.mit.edu/ans7870/18/18.013a/textbook/HTML/chapter04/section03.html#:~:text=Evaluating%20a%20Determinant%20by%20Gaussian,product%20of%20the%20diagonal%20entries. 
