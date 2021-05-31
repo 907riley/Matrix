@@ -41,7 +41,7 @@ The GUI is fairly straightforward but here is a quick expanation of how to use i
   1. The settings menu is the first part of the program you will see (if using pre-coded tests, skip to step 3). Just use the drop down menus to pick the number of rows you need for your problem (this is the number of unknowns you have for a Gaussian Elimination) and the problem you want to solve (solving a system of linear equations is just referred to as Gaussian Elimination). Then click the "Confirm Settings" button.
   2. The GUI will then create a screen for you to begin solving your problem. Enter in the numbers into the text boxes (for Gaussian Elimination, don't worry about matching your variables to the ones on the GUI, you just need to make sure all the columns are the same variable). The last column when using the Gaussian Elimination mode is for the constants that the linear equations equal.
   3. Once all the numbers are loaded into the text boxes, click the button that either says "Perform Gaussian Elimination", "Calculate Determinant", or "Compute Inverse".
-  4. The answer will appear at the bottom of the screen for both modes.
+  4. The answer will appear at the bottom of the screen for solving a system of linear equations and computing the determinant, and the inverse will be visible in the matrix components.
   5. You can reset the GUI by clicking the "Reset Matrix and Solutions" button.
 
 ### Run from the Start
