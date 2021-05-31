@@ -27,7 +27,7 @@ For coding this algorithm, I took my Gaussian Elimination code and altered it sl
 [This](http://www.mesacc.edu/~scotz47781/mat150/notes/cramers_rule/Determinnant_3_by_3_Matrix_Practice.pdf) is a site with multiple examples of determinant problems with answers to test the GUI with.
 
 ### Finding the Inverse
-The inverse of a matrix A (represented as A^(-1)) has the property such that A * A^(-1) results in the identity matrix I. The identity matrix is matrix consisting of ones along the diagonal running from top left to bottom right and all the other matrix components are 0. As stated above, if the determinant of a matrix is 0, then there is no inverse.
+The inverse of a matrix A (represented as A^(-1)) has the property such that A * A^(-1) results in the identity matrix I. The identity matrix is a matrix consisting of ones along the diagonal running from the top left to the bottom right and all the other matrix components are 0. As stated above, if the determinant of a matrix is 0, then there is no inverse.
 
 
 Finding the inverse of a matrix allows you to solve matrix problems that would normally require division because you can't divide matrices. Multiplying a matrix by another matrix's inverse is the same as dividing by that other matrix.
